@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Socket.IO chat</title>
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+    <script defer src="app.js"></script>
+    <style>
+      
+    </style>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="top-section">
+      <form action="" class="join-form">
+       <input type="text" id="name" maxlength="16" placeholder="Your name" size="10" required autocomplete="off">
+        <input type="text" id="room" maxlength="16" placeholder="Room name" size="10" required>
+        <button class="btn" type="submit">Join</button>
+       
+     </form>
+     </div>
+    <p id="activeUsers" class="alert-container" ></p>
+
+
+    
+    <ul id="messages"></ul>
+   
+    
+    <form id="msgForm" action="">
+      <input id="msgInput" autocomplete="off" placeholder="Send message..."/>
+      <button class="btn">Send</button>
+    </form>
+  </body>
+</html> 

@@ -1,0 +1,201 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0 2rem;
+  padding-bottom: 3rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+    font-size: 100%;
+    font-size: 1.4vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #181616;
+}
+
+#msgForm {
+  
+  padding: 0.25rem;
+  position: fixed;
+  bottom: 5rem;
+ 
+  display: flex;
+  height: 3rem;
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
+}
+#msgInput {
+  padding: 0 1rem;
+  flex-grow: 1;
+  margin: 0.25rem;
+}
+
+#msgInput:focus {
+  outline: none;
+}
+
+
+#messages {
+    display: flex;
+    width: 60%;
+    align-items: center;
+    flex-direction: column;
+    list-style-type: none;
+    gap: 8px  ;
+    margin: 0;
+    padding: 0;
+    height: 62vh;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+ display: none;              
+}
+
+.top-section{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+
+
+
+
+#messages span{
+    background: 	#8c648c;
+    color: rgb(255, 255, 255);
+    border-radius: 4px;
+    width: fit-content;
+    padding: 8px 16px;
+    margin-bottom: 1rem;
+
+
+
+}
+
+#messages > li {
+  padding: 0.5rem 1rem;
+}
+
+#roomStatus{
+  color: red;
+  padding: 0 16px;
+}
+
+
+
+.join-form{
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+#activeUsers{
+    display: none;
+    /* background-color: #0e6ddd;  */
+    border-bottom: 2px solid #0e6ddd;
+    
+    color: white;
+    text-align: center;
+    
+    padding: 8px 16px 0px 16px;
+    margin-bottom: 8px;
+}
+
+
+
+input{
+    border: none;
+    border-radius: 8px;
+    font-size:1.2vw
+}
+
+#name,#room,#msgInput{
+    
+    padding: 4px 16px;
+   
+}
+
+.btn{
+  border: 1px solid black;
+  border-radius: 2rem;
+  font-size: 1.2vw;
+  padding: 8px 16px;
+}
+
+.btn:hover{
+  cursor: pointer;
+}
+
+.msg{
+  max-width: 512px;
+  line-break: anywhere;
+  border-radius: 12px;
+  
+}
+
+.msg-incoming{
+  align-self: flex-start;
+  background-color: #3a3f50;
+  color: white;
+  border-top-left-radius: 0;
+}
+
+.msg-sent{
+  align-self: flex-end;
+  background-color: #0e6ddd;
+  color: black;
+  border-top-right-radius: 0;
+}
+
+
+@media only screen and (max-width: 768px) {
+  body{
+    font-size:2vw;
+  }
+
+  .btn{
+    font-size:2vw;
+  }
+
+  input{
+    font-size:2vw
+  }
+}
+
+@media only screen and (max-width: 566px) {
+  body{
+    font-size:2.5vw;
+  }
+
+  .btn{
+    font-size:2.5vw;
+  }
+
+  input{
+    font-size:2.5vw
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  body{
+    font-size:3vw;
+  }
+
+  .btn{
+    font-size:3vw;
+  }
+
+  input{
+    font-size:3vw
+  }
+}
