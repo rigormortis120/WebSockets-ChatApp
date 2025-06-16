@@ -55,12 +55,22 @@ io.on('connection', socket => {
     console.log(`User ${socket.id} connected`)
 
     socket.on('message', ({name,msg}) => {
-        
+        const data={name,msg};
         const room = getUser(socket.id)?.room
-        io.to(room).emit('message', `${name}: ${msg}`)
+        io.to(room).emit('message', data)
     });
 
+
+    //IF TYPING, DISPLAY ACTIVITY
+    socket.on("activity",(name)=>{
+            console.log(name);
+            const room = getUser(socket.id)?.room
+            io.to(room).emit('activity', name)
+    })
+
     socket.on('enterRoom', ({name,room})=>{
+            
+            
         //CHECK IF USER WAS IN A PREVIOUS ROOM AND LEAVE IF SO ......more
         const prevRoom=getUser(socket.id)?.room;
         if(prevRoom){
@@ -71,6 +81,10 @@ io.on('connection', socket => {
         //ACTIVATE THE USER AND JOIN ROOM
         const user=activateUser(socket.id,name,room);
         socket.join(room);
+        //ENABLE THE MESSAGE INPUT
+        socket.emit("enableMsg");
+
+        //NOTIFY ROOM
         io.to(room).emit("adminMsg", `User ${name} has joined the room`);
 
         //UPDATE USER LIST FOR PREVIOUS ROOM IF EXISTS
@@ -82,6 +96,7 @@ io.on('connection', socket => {
         io.to(room).emit('userList',getUsersInRoom(user.room))
         console.log(`${name} joined room ${room}`)
 
+        
 
     //USER DISCONNECTS
     socket.on('disconnect',()=>{

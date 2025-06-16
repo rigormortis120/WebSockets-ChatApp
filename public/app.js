@@ -17,6 +17,8 @@ const roomInput=document.getElementById('room');
 
 function enterRoom(e){
     e.preventDefault();
+    //get name input for later use
+    //msgActivity=document.getElementById('msgActivity');
     
     
     if (nameInput.value && roomInput.value){
@@ -33,6 +35,12 @@ function enterRoom(e){
     }
 };
 
+
+socket.on("enableMsg",()=>{
+    //ATTRIBUTE ENABLE INPUT
+    msgInput.removeAttribute("disabled");
+    msgInput.setAttribute("placeholder","Send a message...");
+})
 
 msgForm.addEventListener("submit",e=>{
     e.preventDefault();
@@ -52,19 +60,28 @@ socket.on('message',data=>{
     
     // console.log(messages.scrollHeight)
     // messages.scrollTo({ left: 0, bottom:0, behavior: "smooth" });
+console.log(data);
+    
+    const messageBox = document.createElement('div');
 
-    const OP=data.split(":")[0];
+    const OP= document.createElement('p');
+    OP.textContent=data.name;
+    OP.className="op";
 
-    const li = document.createElement('li')
+    const content= document.createElement('p');
+    content.textContent=data.msg;
+    content.className="m-content"
 
-    if (OP===nameInput.value){
-        li.className="msg msg-sent";
+
+    if (data.name===nameInput.value){
+        messageBox.className="msg msg-sent";
     }
     else{
-        li.className="msg msg-incoming";
+        messageBox.className="msg msg-incoming";
     }
-    li.textContent = data
-    document.querySelector('#messages').appendChild(li);
+    messageBox.appendChild(OP);
+    messageBox.appendChild(content);
+    messages.insertBefore(messageBox,msgActivity);
     messages.scrollTop=messages.scrollTopMax;
 })
 
@@ -76,16 +93,42 @@ socket.on('userList', data=>{
     const userlist = document.createElement('span')
     userlist.textContent = list
     activeUsers.style.display="inline";
-    activeUsers.innerText=`ACTIVE USERS IN ROOM: ${list}`;
+    activeUsers.innerText=`Active users in this room: ${list}`;
 });
 
 socket.on("adminMsg",(message)=>{
     
     const msg=document.createElement("span");
     msg.textContent=message;
-    document.querySelector('#messages').appendChild(msg)
+    messages.insertBefore(msg,msgActivity);
 })
 
 userForm.addEventListener("submit",enterRoom);
+
+//ACTIVITY TIMER FOR MESSAGES
+msgInput.addEventListener("keypress",()=>{
+    socket.emit('activity', nameInput.value)
+})
+
+
+let activityTimer
+socket.on("activity", (name) => {
+    
+    //dont send back to user
+    if (name!==nameInput.value){
+            //1. put text that its typing
+            msgActivity.textContent = `${name} is typing...`;
+            //2. make it visible
+            msgActivity.style.display="inline";
+
+            //3. on timeout, remove
+            
+                // Clear after 3 seconds 
+                clearTimeout(activityTimer)
+                activityTimer = setTimeout(() => {
+                    msgActivity.style.display="none";
+                }, 3000)
+}
+})
 
 

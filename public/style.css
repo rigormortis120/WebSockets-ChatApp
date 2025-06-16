@@ -8,38 +8,83 @@ body {
   padding-bottom: 3rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif;
-    font-size: 100%;
-    font-size: 1.4vw;
+    
+    font-size: 1.2vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #181616;
+    background-color: black;
+    background-image: url(./Group\ 1.svg);
+    background-size: cover;
+}
+#background-glow{
+  z-index: 0;
+  position: fixed;
+  border-radius: 50%;
+  width: 60vw;
+  height: 40vw;
+  bottom: -20vw;
+  background-color: #3FD5BC;
+  filter: blur(100px) opacity(40%);
+  overflow: hidden;
+}
+
+input{
+  z-index: 2;
+  background-color: none;
+  fill: none;
+  background: transparent;
+  border: none;
+  font-size:1vw
+}
+
+#name,#room{
+  background-color: rgba(255, 255, 255,0.10);
+  color: white;
+  border-radius: 99px;
+  border: 1px solid white;
+}
+
+
+
+
+.btn{
+  border: none;
+  border-radius: 99px;
+  background-color: #42D1B7;
+  width: 48px;
+  height: 48px;
+}
+
+.btn:hover{
+  cursor: pointer;
 }
 
 #msgForm {
-  
+  border: white 1px solid;
+  border-radius: 99px;
   padding: 0.25rem;
   position: fixed;
   bottom: 5rem;
- 
+  background-color: rgba(255,255,255,0.1);
   display: flex;
   height: 3rem;
-  box-sizing: border-box;
-  backdrop-filter: blur(10px);
 }
+
 #msgInput {
   padding: 0 1rem;
   flex-grow: 1;
   margin: 0.25rem;
+  color: white;
 }
 
 #msgInput:focus {
   outline: none;
 }
 
-
 #messages {
+    z-index: 2;
     display: flex;
     width: 60%;
     align-items: center;
@@ -66,23 +111,19 @@ body::-webkit-scrollbar {
   margin-top: 2rem;
 }
 
-
-
-
-
 #messages span{
-    background: 	#8c648c;
+    background: 	black;
     color: rgb(255, 255, 255);
-    border-radius: 4px;
+    border: 1px solid white;
+    border-radius: 99px;
     width: fit-content;
     padding: 8px 16px;
     margin-bottom: 1rem;
-
-
-
+    box-shadow: 0px 0px 18px 0px rgba(255,255,255,0.9);
+    margin-top: 1rem;
 }
 
-#messages > li {
+#messages > div {
   padding: 0.5rem 1rem;
 }
 
@@ -90,8 +131,6 @@ body::-webkit-scrollbar {
   color: red;
   padding: 0 16px;
 }
-
-
 
 .join-form{
     display: flex;
@@ -101,62 +140,58 @@ body::-webkit-scrollbar {
 
 #activeUsers{
     display: none;
-    /* background-color: #0e6ddd;  */
-    border-bottom: 2px solid #0e6ddd;
-    
+    font-size: 1vw; 
     color: white;
     text-align: center;
-    
-    padding: 8px 16px 0px 16px;
+    opacity: 60%;
+    /* padding: 8px 16px 0px 16px; */
     margin-bottom: 8px;
 }
 
-
-
-input{
-    border: none;
-    border-radius: 8px;
-    font-size:1.2vw
-}
-
 #name,#room,#msgInput{
-    
     padding: 4px 16px;
-   
-}
-
-.btn{
-  border: 1px solid black;
-  border-radius: 2rem;
-  font-size: 1.2vw;
-  padding: 8px 16px;
-}
-
-.btn:hover{
-  cursor: pointer;
 }
 
 .msg{
   max-width: 512px;
   line-break: anywhere;
   border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.op{
+  font-size: 0.8vw;
+  color: rgba(60, 58, 58, 0.8);
+}
+
+.m-content{
+  font-size: 1.1vw;
   
 }
 
 .msg-incoming{
   align-self: flex-start;
-  background-color: #3a3f50;
-  color: white;
+  background-color: #ffffff;
+  align-items: flex-start;
   border-top-left-radius: 0;
 }
 
 .msg-sent{
   align-self: flex-end;
-  background-color: #0e6ddd;
-  color: black;
+  background-color: #42D1B7;
+  align-items: flex-end;
   border-top-right-radius: 0;
 }
 
+#msgActivity{
+  order: 999;
+  color: #7c8191;
+  background-color: rgb(41, 41, 41);
+  font-style: italic;
+  display: none;
+}
 
 @media only screen and (max-width: 768px) {
   body{

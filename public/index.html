@@ -11,11 +11,17 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <div id="background-glow"></div>
     <div class="top-section">
       <form action="" class="join-form">
        <input type="text" id="name" maxlength="16" placeholder="Your name" size="10" required autocomplete="off">
         <input type="text" id="room" maxlength="16" placeholder="Room name" size="10" required>
-        <button class="btn" type="submit">Join</button>
+        <button class="btn" type="submit">
+          <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 1L7 7L1 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+
+        </button>
        
      </form>
      </div>
@@ -23,12 +29,27 @@
 
 
     
-    <ul id="messages"></ul>
+    <div id="messages">
+      <div id="msgActivity" class="msg msg-incoming"></li>
+    </div>
    
     
     <form id="msgForm" action="">
-      <input id="msgInput" autocomplete="off" placeholder="Send message..."/>
-      <button class="btn">Send</button>
+      <input id="msgInput" autocomplete="off" placeholder="Join a room first"  disabled/>
+      <button class="btn">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_1160_444)">
+<path d="M14.1427 16.9999H29.6991" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M29.699 16.9997L12.3748 25.1315C12.2761 25.1681 12.1689 25.1757 12.066 25.1532C11.9631 25.1308 11.8689 25.0793 11.7944 25.0048C11.7199 24.9303 11.6684 24.836 11.6459 24.7331C11.6235 24.6303 11.6311 24.5231 11.6677 24.4244L14.1426 16.9997L11.6677 9.57511C11.6311 9.47639 11.6235 9.36921 11.6459 9.26632C11.6684 9.16342 11.7199 9.06914 11.7944 8.99467C11.8689 8.9202 11.9631 8.86868 12.066 8.84622C12.1689 8.82377 12.2761 8.83133 12.3748 8.86801L29.699 16.9997Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_1160_444">
+<rect width="24" height="24" fill="white" transform="translate(16.9707 0.0292969) rotate(45)"/>
+</clipPath>
+</defs>
+</svg>
+
+      </button>
     </form>
   </body>
 </html> 
