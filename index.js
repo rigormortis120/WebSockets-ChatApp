@@ -53,6 +53,8 @@ function getUsersInRoom(room){
 
 io.on('connection', socket => {
     console.log(`User ${socket.id} connected`)
+    io.emit('userCount',UsersState.users.length);
+    
 
     socket.on('message', ({name,msg}) => {
         const data={name,msg};
@@ -96,7 +98,7 @@ io.on('connection', socket => {
         io.to(room).emit('userList',getUsersInRoom(user.room))
         console.log(`${name} joined room ${room}`)
 
-        
+        io.emit('userCount',UsersState.users.length);
 
     //USER DISCONNECTS
     socket.on('disconnect',()=>{
@@ -113,6 +115,24 @@ io.on('connection', socket => {
     })
         
         // socket.broadcast.to(room).emit('message',`${name} has joined the room`);
+    })
+
+    socket.on("leaveRoom",(data)=>{
+        
+        socket.leave(data.room);
+        socket.emit("leaveRoom");
+        
+        const user=getUser(socket.id);
+        userAppDisconnect(socket.id)
+
+        if (user){
+            //NOTIFY USERS THAT SOMEONE LEFT
+            io.to(user.room).emit("adminMsg", `User ${user.name} has left the room`);
+            //UPDATE USER LIST OF ROOM
+            io.to(user.room).emit("userList", getUsersInRoom(user.room));
+        }
+
+        io.emit('userCount',UsersState.users.length);
     })
     
 

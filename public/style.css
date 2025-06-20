@@ -1,15 +1,15 @@
 *{
   margin: 0;
   padding: 0;
+  font-size: 16px;
 }
 
 body {
   margin: 0 2rem;
   padding-bottom: 3rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif;
+ 
     
-    font-size: 1.2vw;
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -17,7 +17,39 @@ body {
     background-color: black;
     background-image: url(./Group\ 1.svg);
     background-size: cover;
+
+     font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
 }
+
+#greet{
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 20vh;
+  width: fit-content;
+  height: fit-content;
+  background-color: #3fd5bc60;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  z-index: 99;
+  padding: 2rem 4rem;
+}
+
+#greet>h1{
+  color: white;
+  font-size: 48px;
+}
+
+#greet>p:nth-of-type(1){
+  font-size: 26px;
+}
+
+
 #background-glow{
   z-index: 0;
   position: fixed;
@@ -31,19 +63,28 @@ body {
 }
 
 input{
+  outline: none;
   z-index: 2;
   background-color: none;
   fill: none;
   background: transparent;
   border: none;
-  font-size:1vw
+  font-size:16px;
+  
+}
+
+.top-inputs{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(255, 255, 255,0.10);
+  border-radius: 99px;
+  border: 1px solid white;
+  padding: 0px 8px 0px 8px;
 }
 
 #name,#room{
-  background-color: rgba(255, 255, 255,0.10);
   color: white;
-  border-radius: 99px;
-  border: 1px solid white;
 }
 
 
@@ -62,6 +103,7 @@ input{
 }
 
 #msgForm {
+  z-index: 99;
   border: white 1px solid;
   border-radius: 99px;
   padding: 0.25rem;
@@ -86,14 +128,14 @@ input{
 #messages {
     z-index: 2;
     display: flex;
-    width: 60%;
+    width: 60%; 
     align-items: center;
     flex-direction: column;
     list-style-type: none;
     gap: 8px  ;
     margin: 0;
     padding: 0;
-    height: 62vh;
+    height: 75vh;
     overflow: scroll;
     scrollbar-width: none;
 }
@@ -119,7 +161,7 @@ body::-webkit-scrollbar {
     width: fit-content;
     padding: 8px 16px;
     margin-bottom: 1rem;
-    box-shadow: 0px 0px 18px 0px rgba(255,255,255,0.9);
+    font-size: 24px;
     margin-top: 1rem;
 }
 
@@ -140,11 +182,11 @@ body::-webkit-scrollbar {
 
 #activeUsers{
     display: none;
-    font-size: 1vw; 
+    /* font-size: 1vw;  */
     color: white;
     text-align: center;
     opacity: 60%;
-    /* padding: 8px 16px 0px 16px; */
+    margin-top: 1rem;
     margin-bottom: 8px;
 }
 
@@ -152,9 +194,20 @@ body::-webkit-scrollbar {
     padding: 4px 16px;
 }
 
+.exit-btn{
+  font-size: 24px;
+  width: fit-content;
+  position: fixed;
+  top: 2vw;
+  left: 10vw;
+  translate: -500px;
+  transition: all 0.3s ease;
+  padding: 4px 16px;
+  color: white;
+}
+
 .msg{
   max-width: 512px;
-  line-break: anywhere;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
@@ -162,13 +215,13 @@ body::-webkit-scrollbar {
 }
 
 .op{
-  font-size: 0.8vw;
+  font-size: 12px;
   color: rgba(60, 58, 58, 0.8);
 }
 
 .m-content{
-  font-size: 1.1vw;
-  
+  font-size: 16px;
+  line-break: anywhere;
 }
 
 .msg-incoming{
@@ -186,6 +239,8 @@ body::-webkit-scrollbar {
 }
 
 #msgActivity{
+  border-radius: 12px;
+  border-top-left-radius: 0;
   order: 999;
   color: #7c8191;
   background-color: rgb(41, 41, 41);
@@ -193,44 +248,87 @@ body::-webkit-scrollbar {
   display: none;
 }
 
+@media only screen and (max-width: 1024px) {
+  #greet h1{
+    font-size: 32px;
+  }
+
+  #greet > p:nth-of-type(1){
+    font-size: 18px;
+  }
+
+}
+
 @media only screen and (max-width: 768px) {
-  body{
-    font-size:2vw;
+  #greet h1{
+    font-size: 30px;
   }
 
-  .btn{
-    font-size:2vw;
+  #greet > p:nth-of-type(1){
+    font-size: 14px;
   }
 
-  input{
-    font-size:2vw
+  .exit-btn{
+    font-size: 16px;
+    left: 24px;
   }
+
+
+  #messages{
+    width: 100%;
+  }
+  #messages span{
+    font-size: 16px;
+  }
+
+  #msgInput{
+    font-size: 16px;
+  }
+
+  
 }
 
 @media only screen and (max-width: 566px) {
-  body{
-    font-size:2.5vw;
+  /* #greet h1{
+    font-size: 24px;
   }
 
-  .btn{
-    font-size:2.5vw;
+  #greet > p:nth-of-type(1){
+    font-size: 12px;
+  } */
+
+  #greet{
+    padding: 1rem 2rem;
   }
 
-  input{
-    font-size:2.5vw
+.join-form{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
+
 }
 
 @media only screen and (max-width: 480px) {
-  body{
-    font-size:3vw;
+  #greet{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding:0;
+  }
+  
+
+  .exit-btn{
+    position:relative;
+    margin: auto;
+    left: 0;
   }
 
-  .btn{
-    font-size:3vw;
+  #messages{
+    font-size: 12px;
   }
 
-  input{
-    font-size:3vw
-  }
+ 
 }

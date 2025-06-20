@@ -1,5 +1,9 @@
 const socket= io();
 
+const greet=document.getElementById("greet");
+const exitBtn=document.getElementsByClassName("exit-btn")[0];
+console.log(exitBtn);
+
 const msgForm = document.getElementById('msgForm');
 const msgInput = document.getElementById('msgInput');
 
@@ -17,9 +21,11 @@ const roomInput=document.getElementById('room');
 
 function enterRoom(e){
     e.preventDefault();
-    //get name input for later use
-    //msgActivity=document.getElementById('msgActivity');
     
+    exitBtn.style.translate="0";
+    // greet.style.left="-100vw"
+    
+    greet.style.translate="0 -500px";
     
     if (nameInput.value && roomInput.value){
         socket.emit('enterRoom',{
@@ -36,11 +42,17 @@ function enterRoom(e){
 };
 
 
+socket.on("userCount",(num)=>{
+    document.getElementById("user-count").textContent=`There are ${num} users currently active`
+    
+})
+
 socket.on("enableMsg",()=>{
     //ATTRIBUTE ENABLE INPUT
     msgInput.removeAttribute("disabled");
     msgInput.setAttribute("placeholder","Send a message...");
 })
+
 
 msgForm.addEventListener("submit",e=>{
     e.preventDefault();
@@ -83,6 +95,7 @@ console.log(data);
     messageBox.appendChild(content);
     messages.insertBefore(messageBox,msgActivity);
     messages.scrollTop=messages.scrollTopMax;
+    
 })
 
 
@@ -130,5 +143,28 @@ socket.on("activity", (name) => {
                 }, 3000)
 }
 })
+
+
+exitBtn.addEventListener("click",()=>{
+    
+    socket.emit("leaveRoom",{
+        name:nameInput.value,
+        room:roomInput.value
+    })
+
+    exitBtn.style.translate="-500px";
+})
+
+
+socket.on("leaveRoom",()=>{
+    msgInput.setAttribute("disabled",1);
+    activeUsers.innerText="";
+    exitBtn.style.translate="-500px";
+    greet.style.translate="0 0";
+    while(document.getElementsByClassName("msg").length!==0) document.getElementsByClassName("msg")[0].remove();
+    while(document.getElementsByTagName("span").length!==0) document.getElementsByTagName("span")[0].remove();
+})
+
+
 
 
