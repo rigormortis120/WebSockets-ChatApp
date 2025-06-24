@@ -1,8 +1,9 @@
 const socket= io();
 
 const greet=document.getElementById("greet");
+const topLine=document.getElementById("top-line");
 const exitBtn=document.getElementsByClassName("exit-btn")[0];
-console.log(exitBtn);
+
 
 const msgForm = document.getElementById('msgForm');
 const msgInput = document.getElementById('msgInput');
@@ -22,8 +23,8 @@ const roomInput=document.getElementById('room');
 function enterRoom(e){
     e.preventDefault();
     
-    exitBtn.style.translate="0";
-    // greet.style.left="-100vw"
+    topLine.style.translate="0";
+    
     
     greet.style.translate="0 -500px";
     
@@ -51,6 +52,7 @@ socket.on("enableMsg",()=>{
     //ATTRIBUTE ENABLE INPUT
     msgInput.removeAttribute("disabled");
     msgInput.setAttribute("placeholder","Send a message...");
+    msgInput.focus();
 })
 
 
@@ -152,14 +154,14 @@ exitBtn.addEventListener("click",()=>{
         room:roomInput.value
     })
 
-    exitBtn.style.translate="-500px";
+   
 })
 
 
 socket.on("leaveRoom",()=>{
     msgInput.setAttribute("disabled",1);
     activeUsers.innerText="";
-    exitBtn.style.translate="-500px";
+    topLine.style.translate="-1200px";
     greet.style.translate="0 0";
     while(document.getElementsByClassName("msg").length!==0) document.getElementsByClassName("msg")[0].remove();
     while(document.getElementsByTagName("span").length!==0) document.getElementsByTagName("span")[0].remove();

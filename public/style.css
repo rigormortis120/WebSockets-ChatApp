@@ -46,7 +46,12 @@ body {
 }
 
 #greet>p:nth-of-type(1){
+  color: white;
   font-size: 26px;
+}
+
+#greet>p:nth-of-type(2){
+  color: white;
 }
 
 
@@ -93,7 +98,7 @@ input{
 .btn{
   border: none;
   border-radius: 99px;
-  background-color: #42D1B7;
+  background-color: #17A48A;
   width: 48px;
   height: 48px;
 }
@@ -103,6 +108,7 @@ input{
 }
 
 #msgForm {
+  width: 55%;
   z-index: 99;
   border: white 1px solid;
   border-radius: 99px;
@@ -157,7 +163,6 @@ body::-webkit-scrollbar {
     background: 	black;
     color: rgb(255, 255, 255);
     border: 1px solid white;
-    border-radius: 99px;
     width: fit-content;
     padding: 8px 16px;
     margin-bottom: 1rem;
@@ -182,7 +187,6 @@ body::-webkit-scrollbar {
 
 #activeUsers{
     display: none;
-    /* font-size: 1vw;  */
     color: white;
     text-align: center;
     opacity: 60%;
@@ -194,16 +198,31 @@ body::-webkit-scrollbar {
     padding: 4px 16px;
 }
 
-.exit-btn{
-  font-size: 24px;
-  width: fit-content;
-  position: fixed;
-  top: 2vw;
-  left: 10vw;
-  translate: -500px;
+#top-line{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  translate: -1200px;
   transition: all 0.3s ease;
-  padding: 4px 16px;
+  margin-top: 4px;
+  gap: 16px;
+}
+
+.exit-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: fit-content;
+  height: fit-content;
   color: white;
+  padding: 4px 12px;
+  /* filter: drop-shadow(0px 8px 15px #17A48A); */
+}
+
+.exit-btn:hover{
+  cursor: pointer;
 }
 
 .msg{
@@ -224,6 +243,10 @@ body::-webkit-scrollbar {
   line-break: anywhere;
 }
 
+.msg-sent>.m-content{
+  color: white;
+}
+
 .msg-incoming{
   align-self: flex-start;
   background-color: #ffffff;
@@ -233,7 +256,7 @@ body::-webkit-scrollbar {
 
 .msg-sent{
   align-self: flex-end;
-  background-color: #42D1B7;
+  background-color: #17A48A;
   align-items: flex-end;
   border-top-right-radius: 0;
 }
@@ -268,9 +291,12 @@ body::-webkit-scrollbar {
     font-size: 14px;
   }
 
+  #greet > p:nth-of-type(2){
+    font-size: 14px;
+  }
+
   .exit-btn{
     font-size: 16px;
-    left: 24px;
   }
 
 
@@ -301,10 +327,23 @@ body::-webkit-scrollbar {
     padding: 1rem 2rem;
   }
 
-.join-form{
+  #top-line{
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  #activeUsers{
+    margin: 0;
+  }
+
+  .join-form{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  #msgForm {
+    bottom: 2rem;
   }
 
 }
@@ -316,7 +355,11 @@ body::-webkit-scrollbar {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding:0;
+    
+  }
+
+  #msgForm {
+    width: 80%;
   }
   
 
