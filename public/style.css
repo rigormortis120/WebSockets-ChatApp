@@ -45,12 +45,12 @@ body {
   font-size: 48px;
 }
 
-#greet>p:nth-of-type(1){
+#greet>p:nth-of-type(2){
   color: white;
   font-size: 26px;
 }
 
-#greet>p:nth-of-type(2){
+#greet>p:nth-of-type(aa){
   color: white;
 }
 
@@ -156,7 +156,7 @@ body::-webkit-scrollbar {
   align-items: center;
   gap: 4px;
   margin-bottom: 1rem;
-  margin-top: 2rem;
+  margin-top:8px;
 }
 
 #messages span{
@@ -276,7 +276,7 @@ body::-webkit-scrollbar {
     font-size: 32px;
   }
 
-  #greet > p:nth-of-type(1){
+  #greet > p:nth-of-type(2){
     font-size: 18px;
   }
 
@@ -287,11 +287,11 @@ body::-webkit-scrollbar {
     font-size: 30px;
   }
 
-  #greet > p:nth-of-type(1){
+  #greet > p:nth-of-type(2){
     font-size: 14px;
   }
 
-  #greet > p:nth-of-type(2){
+  #greet > p:nth-of-type(aa){
     font-size: 14px;
   }
 
@@ -319,7 +319,7 @@ body::-webkit-scrollbar {
     font-size: 24px;
   }
 
-  #greet > p:nth-of-type(1){
+  #greet > p:nth-of-type(2){
     font-size: 12px;
   } */
 

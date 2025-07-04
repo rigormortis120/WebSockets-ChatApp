@@ -65,7 +65,6 @@ io.on('connection', socket => {
 
     //IF TYPING, DISPLAY ACTIVITY
     socket.on("activity",(name)=>{
-            console.log(name);
             const room = getUser(socket.id)?.room
             io.to(room).emit('activity', name)
     })

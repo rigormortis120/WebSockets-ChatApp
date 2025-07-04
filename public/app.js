@@ -147,6 +147,14 @@ socket.on("activity", (name) => {
 })
 
 
+msgInput.addEventListener("submit",()=>{
+    clearTimeout(activityTimer)
+            activityTimer = setTimeout(() => {
+                msgActivity.style.display="none";
+             }, 0)
+});
+
+
 exitBtn.addEventListener("click",()=>{
     
     socket.emit("leaveRoom",{
@@ -160,6 +168,7 @@ exitBtn.addEventListener("click",()=>{
 
 socket.on("leaveRoom",()=>{
     msgInput.setAttribute("disabled",1);
+    msgInput.setAttribute("placeholder","Join a room first");
     activeUsers.innerText="";
     topLine.style.translate="-1200px";
     greet.style.translate="0 0";
