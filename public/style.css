@@ -42,16 +42,18 @@ body {
 
 #greet>h1{
   color: white;
-  font-size: 48px;
+  font-size: 28px;
 }
 
 #greet>p:nth-of-type(2){
   color: white;
-  font-size: 26px;
+  font-size: 16px;
 }
 
-#greet>p:nth-of-type(aa){
-  color: white;
+#greet>p:nth-of-type(1){
+ font-size: 14px;
+  margin-bottom: 20px;
+  color: #a8ccc1;;;
 }
 
 
@@ -75,7 +77,7 @@ input{
   background: transparent;
   border: none;
   font-size:16px;
-  
+     
 }
 
 .top-inputs{
@@ -84,9 +86,15 @@ input{
   gap: 8px;
   background-color: rgba(255, 255, 255,0.10);
   border-radius: 99px;
-  border: 1px solid white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 0px 8px 0px 8px;
+  transition: border 0.2s ease;
 }
+
+.top-inputs:focus-within {
+  border-color: #3fd5bc;
+}
+
 
 #name,#room{
   color: white;
@@ -100,11 +108,15 @@ input{
   border-radius: 99px;
   background-color: #17A48A;
   width: 48px;
-  height: 48px;
+  height: 48px;   
+  background: linear-gradient(135deg, #17a48a, #3fd5bc);
+  transition: transform 0.2s ease;
 }
 
 .btn:hover{
   cursor: pointer;
+  transform: scale(1.05);
+
 }
 
 #msgForm {
