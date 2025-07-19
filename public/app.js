@@ -70,13 +70,16 @@ msgForm.addEventListener("submit",e=>{
 })
 
 socket.on('message',data=>{
+    const now = new Date();
     // messages.scrollTo(0, messages.scrollHeight);
     
     // console.log(messages.scrollHeight)
     // messages.scrollTo({ left: 0, bottom:0, behavior: "smooth" });
 console.log(data);
-    
+    //CREATING A MESSAGE
     const messageBox = document.createElement('div');
+
+    const messageInner= document.createElement('div');
 
     const OP= document.createElement('p');
     OP.textContent=data.name;
@@ -84,17 +87,26 @@ console.log(data);
 
     const content= document.createElement('p');
     content.textContent=data.msg;
-    content.className="m-content"
+    content.className="m-content";
 
+    const time_msg= document.createElement('p');
+    time_msg.textContent=now.getHours().toString()+":"+now.getMinutes().toString().padStart(2, '0');   
+    time_msg.className="m-time";
 
+    //STYLING MESSAGE
+    messageInner.className="msg-inner";
     if (data.name===nameInput.value){
         messageBox.className="msg msg-sent";
     }
     else{
         messageBox.className="msg msg-incoming";
     }
-    messageBox.appendChild(OP);
-    messageBox.appendChild(content);
+
+
+    messageInner.appendChild(OP);
+    messageInner.appendChild(content);
+    messageBox.appendChild(messageInner);
+    messageBox.appendChild(time_msg);
     messages.insertBefore(messageBox,msgActivity);
     messages.scrollTop=messages.scrollTopMax;
     

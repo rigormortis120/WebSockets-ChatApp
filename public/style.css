@@ -38,6 +38,8 @@ body {
   transition: all 0.3s ease;
   z-index: 99;
   padding: 2rem 4rem;
+
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
 #greet>h1{
@@ -253,16 +255,13 @@ body::-webkit-scrollbar {
 .m-content{
   font-size: 16px;
   line-break: anywhere;
-}
-
-.msg-sent>.m-content{
   color: white;
 }
+
 
 .msg-incoming{
   align-self: flex-start;
   background-color: #ffffff;
-  align-items: flex-start;
   border-top-left-radius: 0;
 }
 
@@ -271,6 +270,27 @@ body::-webkit-scrollbar {
   background-color: #17A48A;
   align-items: flex-end;
   border-top-right-radius: 0;
+}
+
+
+.msg-inner{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+}
+
+.msg-sent>.msg-inner{
+  align-items: flex-end;
+}
+
+.msg-incoming>.msg-inner{
+  align-items: flex-start;
+}
+
+
+.m-time{
+  color: #A41731A8;
+  font-size: 12px;
 }
 
 #msgActivity{
