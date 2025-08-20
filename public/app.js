@@ -26,7 +26,7 @@ function enterRoom(e){
     topLine.style.translate="0";
     
     
-    greet.style.translate="0 -500px";
+    greet.style.translate="0 -800px";
     
     if (nameInput.value && roomInput.value){
         socket.emit('enterRoom',{
